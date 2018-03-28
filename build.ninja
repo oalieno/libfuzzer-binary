@@ -1,0 +1,13 @@
+cxx = clang++-4.0
+#cflags = -fsanitize=address -fno-omit-frame-pointer -fsanitize-coverage=trace-pc-guard,trace-cmp,trace-gep,trace-div
+cflags = -pthread
+source = project.cc
+
+rule libfuzzer-ar-build
+    command = cd ./source && ./build.sh
+
+rule libfuzzer-build
+    command = $cxx $cflags ./source/libFuzzer.a $in -o $out
+
+build source/libfuzzer.a: libfuzzer-ar-build
+build fuzzer: libfuzzer-build $source
