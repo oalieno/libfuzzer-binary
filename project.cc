@@ -98,15 +98,15 @@ void parse(int fd) {
     map<unsigned long long, int> index;
     while(true) {
         try {
-            parse_lines(fd, 2);
-            bool valid = false;
+            parse_line(fd);
+            string line = parse_line(fd);
+            bool valid = false; if(line.find("main") != string::npos) valid = true;
             Segment current;
             while(true) {
                 string line = parse_line(fd);
                 if(line.empty()) break;
                 unsigned long long address = stoull(line.substr(0, 18), nullptr, 16);
                 if(main.start() <= address and address <= main.end()) {
-                    valid = true;
                     current.address.push_back(address);
                 }
             }
@@ -149,7 +149,11 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     parse(P_ERR[0]);
     close(P_ERR[0]);
     
-    wait(NULL);
+    int status;
+    waitpid(pid, &status, 0);
+    if(not WIFEXITED(status)) {
+        exit(0);
+    }
 
     close(P_IN[0]);
     close(P_IN[1]);
