@@ -50,6 +50,7 @@ string r2cmd(R2Pipe *r2, const char *cmd) {
 }
 
 void get_block_info(map<unsigned long long, int> &index) {
+    
     string open_r2 = "r2 -q0 ", filename(getenv("FUZZBIN"));
     open_r2 += filename;
     R2Pipe *r2 = r2p_open(open_r2.c_str());
@@ -60,7 +61,9 @@ void get_block_info(map<unsigned long long, int> &index) {
         data = r2cmd(r2, "afbj");
         r2p_close(r2);
     }
-    cout << data;
+    
+    int jedi = 0;
+    
     cJSON *root = cJSON_Parse(data.c_str());
     int arr_size = cJSON_GetArraySize(root);
     for(int i = 0; i < arr_size; i++) {
@@ -68,7 +71,9 @@ void get_block_info(map<unsigned long long, int> &index) {
         if (item) {
             cJSON *ele = cJSON_Parse(cJSON_Print(item));
             cJSON *addr = cJSON_GetObjectItem(ele, "addr");
-            cout << cJSON_Print(addr) << endl;
+            unsigned long long val;
+            sscanf(cJSON_Print(addr), "%llu", &val);
+            index[val] = jedi++;
         }
     }
 }
@@ -130,7 +135,6 @@ void parse(int fd) {
 
     parse_line_until(fd, "entry");
 
-    int jedi = 0;
     map<unsigned long long, int> index;
 
     get_block_info(index);
