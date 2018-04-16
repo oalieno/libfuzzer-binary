@@ -1,6 +1,6 @@
 cxx = clang++-4.0
 cflags = -std=c++14
-fflags = -pthread
+fflags = -pthread -I/usr/include/libr -lr_socket -lr_util -ldl -I./cJSON
 source = project.cc
 
 rule libfuzzer-ar-build
