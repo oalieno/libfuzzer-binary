@@ -139,7 +139,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         if(dup2(P_IN[0], STDIN_FILENO) < 0) error("dup2");
         if(dup2(dev_null, STDOUT_FILENO) < 0) error("dup2");
         if(dup2(P_ERR[1], STDERR_FILENO) < 0) error("dup2");
-        char * const args[7] = { "/usr/bin/timeout", "5", "/usr/bin/qemu-x86_64", "-d", "in_asm", "/home/oalieno/Alien/libfuzzer-binary/test", (char *) 0 };
+        char * const args[7] = { "/usr/bin/timeout", "5", "/usr/bin/qemu-x86_64", "-d", "in_asm", getenv("FUZZBIN"), (char *) 0 };
         execve(args[0], args, NULL);
         perror("execve");
         exit(0);
