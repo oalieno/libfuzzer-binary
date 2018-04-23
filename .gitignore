@@ -1,5 +1,6 @@
 CORPUS/
 debug/
+
 .ninja*
 crash*
 *.swp

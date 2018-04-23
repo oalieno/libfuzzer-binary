@@ -63,15 +63,9 @@ vector<string> parse_lines(int fd, int n) {
 vector<string> parse_line_until(int fd, string text) {
     vector<string> result;
     while(true) {
-        try {
-            string line = parse_line(fd);
-            result.push_back(line);
-            if(line.find(text) != string::npos) {
-                break;
-            }
-        }
-        catch(exception &e) {
-            cout << e.what() << endl;
+        string line = parse_line(fd);
+        result.push_back(line);
+        if(line.find(text) != string::npos) {
             break;
         }
     }
@@ -79,45 +73,26 @@ vector<string> parse_line_until(int fd, string text) {
 }
 
 void parse(int fd) {
-    Segment main;
-
-    parse_line_until(fd, "start");
-
-    string line = parse_line(fd);
-    assert(SZ(line) >= 16 + 16 + 1);
-    main.address.push_back(stoull(line.substr(0, 16), nullptr, 16));
-    main.address.push_back(stoull(line.substr(17, 16), nullptr, 16));
-
-    parse_line_until(fd, "entry");
-
-    map<unsigned long long, int> index;
-
-    get_block_info(index);
-
-    while(true) {
-        try {
-            parse_line(fd);
-            string line = parse_line(fd);
-            bool valid = true;
+    try {
+        parse_line_until(fd, "entry");
+        map<unsigned long long, int> index;
+        get_block_info(index);
+        while(true) {
+            parse_lines(fd, 2);
             Segment current;
             while(true) {
                 string line = parse_line(fd);
                 if(line.empty()) break;
                 unsigned long long address = stoull(line.substr(0, 18), nullptr, 16);
-                if(main.start() <= address and address <= main.end()) {
-                    current.address.push_back(address);
-                }
+                current.address.push_back(address);
             }
-            if(valid) {
-                if(index.find(current.start()) == index.end()) break;
-                int i = index[current.start()];
-                __sancov_trace_pc_pcs[i] = current.start();
-                __sancov_trace_pc_guard_8bit_counters[i]++;
-            }
+            if(index.find(current.start()) == index.end()) continue;
+            int i = index[current.start()];
+            __sancov_trace_pc_pcs[i] = current.start();
+            __sancov_trace_pc_guard_8bit_counters[i]++;
         }
-        catch(exception &e) {
-            cout << e.what() << endl;
-            break;
-        }
+    }
+    catch(exception & e) {
+        return;
     }
 }
