@@ -31,14 +31,17 @@ we use cJSON as submodule
 sudo apt-get install ninja-build
 ```
 
-## clone this repo
+## get started
 
 ```
 git clone --recurse-submodules https://github.com/OAlienO/libfuzzer-binary.git
-```
-
-## build
-
-```
+cd libfuzzer-binary
 ninja
+```
+
+## docker support
+
+```
+docker pull oalieno/libfuzzer-binary
+docker run --rm -it --privileged oalieno/libfuzzer-binary /bin/bash
 ```
