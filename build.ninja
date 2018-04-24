@@ -6,7 +6,7 @@ rule libfuzzer-ar-build
     command = cd ./source && ./build.sh
 
 rule libfuzzer-build
-    depfile = project.cc parse.h block.h
+    depfile = source/libFuzzer.a project.cc parse.h block.h
     command = $cxx $cflags $fflags ./source/libFuzzer.a $in -o $out
 
 rule normal-build
