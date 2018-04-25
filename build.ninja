@@ -3,15 +3,15 @@ cflags = -std=c++14
 fflags = -pthread -I/usr/include/libr -lr_socket -lr_util -ldl -I./cJSON
 
 rule libfuzzer-ar-build
-    command = cd ./source && ./build.sh
+    command = cd ./libfuzzer-source && ./build.sh
 
 rule libfuzzer-build
-    depfile = source/libFuzzer.a project.cc parse.h block.h
-    command = $cxx $cflags $fflags ./source/libFuzzer.a $in -o $out
+    depfile = libfuzzer-source/libFuzzer.a project/project.cc project/parse.h project/block.h
+    command = $cxx $cflags $fflags ./libfuzzer-source/libFuzzer.a $in -o $out
 
 rule normal-build
     command = $cxx $cflags $in -o $out
 
-build source/libFuzzer.a: libfuzzer-ar-build
-build fuzzer: libfuzzer-build project.cc
-build test: normal-build test.cc
+build libfuzzer-source/libFuzzer.a: libfuzzer-ar-build
+build fuzzer: libfuzzer-build project/project.cc
+build testing/test: normal-build testing/test.cc
