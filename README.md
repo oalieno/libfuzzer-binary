@@ -39,7 +39,7 @@ cd libfuzzer-binary
 ninja
 ```
 
-## get start
+## get started
 
 use `FUZZBIN` environment variable to pass the target binary
 
