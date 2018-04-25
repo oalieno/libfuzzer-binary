@@ -31,12 +31,20 @@ we use cJSON as submodule
 sudo apt-get install ninja-build
 ```
 
-## get started
+## build
 
 ```
 git clone --recurse-submodules https://github.com/OAlienO/libfuzzer-binary.git
 cd libfuzzer-binary
 ninja
+```
+
+## get start
+
+use `FUZZBIN` environment variable to pass the target binary
+
+```
+FUZZBIN=$(pwd)/test ./fuzzer
 ```
 
 ## docker support
