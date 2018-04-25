@@ -26,7 +26,8 @@ void get_block_info(map<unsigned long long, int> &index) {
 
     string func_list;
     if(r2) {
-        r2cmd(r2, "aa");
+        r2cmd(r2, "e anal.jmptbl = true");
+        r2cmd(r2, "aaa");
         func_list = r2cmd(r2, "aflj");
     }
 
