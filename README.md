@@ -44,7 +44,7 @@ ninja
 use `FUZZBIN` environment variable to pass the target binary
 
 ```
-FUZZBIN=$(pwd)/test ./fuzzer
+FUZZBIN=$(pwd)/testing/test ./fuzzer
 ```
 
 ## docker support
