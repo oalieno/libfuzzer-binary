@@ -4,6 +4,7 @@
 #include <map>
 #include <r_socket.h>
 #include <cJSON.c>
+#include "struct.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ string r2cmd(R2Pipe *r2, string cmd) {
     return NULL;
 }
 
-void get_block_info(map<unsigned long long, int> &index) {
+void get_block_info(map<unsigned long long, basic_block> &index) {
     string open_r2 = "r2 -q0 ", filename(getenv("FUZZBIN"));
     open_r2 += filename;
     R2Pipe *r2 = r2p_open(open_r2.c_str());
@@ -76,9 +77,12 @@ void get_block_info(map<unsigned long long, int> &index) {
                     if (item) {
                         cJSON *ele = cJSON_Parse(cJSON_Print(item));
                         cJSON *addr = cJSON_GetObjectItem(ele, "addr");
-                        unsigned long long val;
-                        sscanf(cJSON_Print(addr), "%llu", &val);
-                        index[val] = counter++;
+                        cJSON *size = cJSON_GetObjectItem(ele, "size");
+                        unsigned long long addr_val;
+                        int size_val;
+                        sscanf(cJSON_Print(addr), "%llu", &addr_val);
+                        sscanf(cJSON_Print(size), "%d", &size_val);
+                        index[addr_val] = basic_block{size_val, counter++};
                     }
                 }
             }

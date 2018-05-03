@@ -9,6 +9,7 @@
 #include <exception>
 
 #include "block.h"
+#include "struct.h"
 
 using namespace std;
 
@@ -75,7 +76,7 @@ vector<string> parse_line_until(int fd, string text) {
 void parse(int fd) {
     try {
         parse_line_until(fd, "entry");
-        map<unsigned long long, int> index;
+        map<unsigned long long, basic_block> index;
         get_block_info(index);
         while(true) {
             parse_lines(fd, 2);
@@ -86,8 +87,9 @@ void parse(int fd) {
                 unsigned long long address = stoull(line.substr(0, 18), nullptr, 16);
                 current.address.push_back(address);
             }
-            if(index.find(current.start()) == index.end()) continue;
-            int i = index[current.start()];
+            map<unsigned long long, basic_block>::iterator it = index.lower_bound(current.start());
+            if(it == index.end() || (*it).first + (*it).second.size < current.start())continue;
+            int i = index[current.start()].index;
             __sancov_trace_pc_pcs[i] = current.start();
             __sancov_trace_pc_guard_8bit_counters[i]++;
         }
