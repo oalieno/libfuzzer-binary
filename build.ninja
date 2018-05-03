@@ -5,13 +5,12 @@ fflags = -pthread -I/usr/include/libr -lr_socket -lr_util -ldl -I./cJSON
 rule libfuzzer-ar-build
     command = cd ./libfuzzer-source && ./build.sh
 
-rule libfuzzer-build
-    depfile = libfuzzer-source/libFuzzer.a project/project.cc project/parse.h project/block.h
-    command = $cxx $cflags $fflags ./libfuzzer-source/libFuzzer.a $in -o $out
+rule fuzzer-build
+    command = $cxx $cflags $fflags ./libfuzzer-source/libFuzzer.a project/project.cc -o $out
 
 rule normal-build
     command = $cxx $cflags $in -o $out
 
-build libfuzzer-source/libFuzzer.a: libfuzzer-ar-build
-build fuzzer: libfuzzer-build project/project.cc
+build libfuzzer-source/libFuzzer.a: libfuzzer-ar-build libfuzzer-source
+build fuzzer: fuzzer-build libfuzzer-source/libFuzzer.a project
 build testing/test: normal-build testing/test.cc

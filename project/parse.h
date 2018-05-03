@@ -87,8 +87,9 @@ void parse(int fd) {
                 unsigned long long address = stoull(line.substr(0, 18), nullptr, 16);
                 current.address.push_back(address);
             }
-            map<unsigned long long, basic_block>::iterator it = index.lower_bound(current.start());
-            if(it == index.end() || (*it).first + (*it).second.size < current.start())continue;
+            map<unsigned long long, basic_block>::iterator it = index.upper_bound(current.start());
+            it--;
+            if(it == index.end() || it->first + it->second.size < current.start()) continue;
             int i = index[current.start()].index;
             __sancov_trace_pc_pcs[i] = current.start();
             __sancov_trace_pc_guard_8bit_counters[i]++;
