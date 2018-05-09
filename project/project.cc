@@ -60,7 +60,6 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         if(WIFSIGNALED(status)) {
             cout << RED << "Signal : " << strsignal(WTERMSIG(status)) << NORMAL << endl;
         }
-        exit(0);
     }
 
     return 0;

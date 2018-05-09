@@ -1,9 +1,6 @@
-#ifndef STRUCT_H
-#define STRUCT_H
+#pragma once
 
 struct basic_block {
   int size;
   int index; 
 };
-
-#endif
