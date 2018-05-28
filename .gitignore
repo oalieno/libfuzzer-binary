@@ -1,3 +1,4 @@
 .ninja*
 crash*
 *.swp
+.qemu.log

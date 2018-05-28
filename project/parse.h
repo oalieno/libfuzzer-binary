@@ -81,15 +81,19 @@ void parse(int fd) {
         while(true) {
             parse_lines(fd, 2);
             Segment current;
+            bool valid = true;
             while(true) {
                 string line = parse_line(fd);
                 if(line.empty()) break;
                 unsigned long long address = stoull(line.substr(0, 18), nullptr, 16);
+                if(current.address.empty()) {
+                    map<unsigned long long, basic_block>::iterator it = index.upper_bound(address);
+                    it--;
+                    if(it == index.end() || it->first + it->second.size < address) valid = false;
+                }
                 current.address.push_back(address);
             }
-            map<unsigned long long, basic_block>::iterator it = index.upper_bound(current.start());
-            it--;
-            if(it == index.end() || it->first + it->second.size < current.start()) continue;
+            if(not valid) continue;
             int i = index[current.start()].index;
             __sancov_trace_pc_pcs[i] = current.start();
             __sancov_trace_pc_guard_8bit_counters[i]++;
