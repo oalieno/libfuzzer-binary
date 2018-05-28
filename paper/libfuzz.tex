@@ -1,0 +1,50 @@
+\documentclass[conference,comsoc]{IEEEtran}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+         basicstyle=\footnotesize\ttfamily, 
+         numberstyle=\tiny,          
+         numbersep=5pt,             
+         tabsize=2,                
+         extendedchars=true,      
+         breaklines=true,        
+         showspaces=false,      
+         showtabs=false,       
+         xleftmargin=17pt,
+         framexleftmargin=17pt,
+         framexrightmargin=5pt,
+         framexbottommargin=4pt,
+         showstringspaces=false,
+         commentstyle=\color{mygreen},    % comment style
+         keywordstyle=\color{blue},       % keyword style
+         stringstyle=\color{mymauve},     % string literal style
+ }
+
+
+\begin{document}
+
+\title{Design and Implement Binary Fuzzing\\based on LibFuzzer}
+\author{
+\IEEEauthorblockN{Chun-Ying Huang, Wei-Chieh Chao, Si-Chen Lin, Yi-Hsien Chen}
+\IEEEauthorblockA{Department of Computer Science, College of Computer Science, National Chiao Tung University}
+}
+
+\maketitle
+
+\input{abstract}
+\input{intro}
+\input{related}
+\input{method}
+\input{eval}
+\input{conclusion}
+
+\bibliographystyle{IEEEtran}
+\bibliography{libfuzz}
+
+\end{document}
+

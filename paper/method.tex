@@ -1,0 +1,48 @@
+
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Link IO together}
+
+Normally, when using Libfuzzer, we put the source code need to be test inside \texttt{LLVMFuzzerTestOneInput} as describe in the introduction section.
+But when we want to run a binary, we don't have source code.
+Hence, what we do is actually putting \texttt{execv("our-binary", ..., ...)} inside the \texttt{LLVMFuzzerTestOneInput} to invoke our binary.
+And before execute \texttt{execv} we need to use dup2 to link
+
+\begin{enumerate}
+  \item [1.] fuzzer test input $\to$ binary stdin.
+  \item [2.] binary stdout $\to$ \texttt{/dev/null}.
+  \item [3.] binary stderr $\to$ \texttt{/dev/null}
+\end{enumerate}
+
+The simplified code is something like below
+
+\begin{lstlisting}[language = c++]
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
+
+    int P_IN[2]; pipe(P_IN);
+    if(Size) write(P_IN[1], Data, Size);
+    ...
+    int pid = fork();
+    if(pid == 0) {
+        dup2(P_IN[0], STDIN_FILENO);
+        dup2(dev_null, STDOUT_FILENO);
+        dup2(dev_null, STDERR_FILENO);
+        ...
+        execv(..., ..., ...);
+    }
+    ...
+}
+\end{lstlisting}
+
+\subsection{Collect Runtime Information}
+
+After we link IO together, the binary should get the input of the libfuzzer test input now.
+Though it is runnable, Libufuzzer don't have any runtime information like code coverage and will stop running after a few rounds.
+First, we need to figure out what Libfuzzer collect while running.
+Libfuzzer collect runtime information through \textbf{Clang SanitizerCoverage}, which provides simple code coverage instrumentation and has hook function for customization.
+Now we use qemu to collect right information for those hook function implemented by LibFuzzer.
+
+\subsubsection{trace pc guard}
+
+
