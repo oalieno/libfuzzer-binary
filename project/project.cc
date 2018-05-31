@@ -37,8 +37,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
     if(Size) write(P_IN[1], Data, Size);
     close(P_IN[1]);
 
-    FILE * log = fopen(logname, "w");
-    fclose(log);
+    mkfifo(logname, 0666);
 
     int pid;
     if((pid = fork()) < 0) err_msg("fork");
@@ -52,14 +51,13 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size) {
         perror("execve");
         exit(0);
     }
+    
+    int logfd = open(logname, O_RDONLY);
+    parse(logfd);
+    close(logfd);
 
     int status;
     waitpid(pid, &status, 0);
-
-    log = fopen(logname, "r");
-    int logfd = fileno(log);
-    parse(logfd);
-    fclose(log);
 
     if(not WIFEXITED(status)) {
         cout << RED << "Error status : " << status << NORMAL << endl;
