@@ -45,4 +45,34 @@ Now we use qemu to collect right information for those hook function implemented
 
 \subsubsection{trace pc guard}
 
+LibFuzzer use two array to store the information of code coverage.
+\begin{enumerate}
+    \item [1.] \texttt{\_\_sancov\_trace\_pc\_pcs} : store the program counter of the beginning of a code block.
+    \item [2.] \texttt{\_\_sancov\_trace\_pc\_guard\_8bit\_counters} : store how many times the code block was hit.
+\end{enumerate}
 
+\begin{lstlisting}
+__sancov_trace_pc_pcs[Idx] = PC;
+__sancov_trace_pc_guard_8bit_counters[Idx]++;
+\end{lstlisting}
+
+We need to fill those array for LibFuzzer to work.
+First, we use radare2 api \textbf{r2pipe} to do static analysis and index those code block.
+While doing static analysis with r2pipe, we filter out addresses we don't want, like library code.
+Second, we use qemu to check whether we hit a code block, and fill in those value.
+The qemu command we use is \texttt{qemu-x86\_64 -D logfile -d in\_asm binary}.
+\texttt{in\_asm} provides us the assembly code and its address being executed. ( see example below )
+
+\begin{lstlisting}
+...
+----------------
+IN:
+0x0000004000802c90:  mov    %r11,%rcx
+0x0000004000802c93:  sub    %rax,%rcx
+0x0000004000802c96:  cmp    $0xb,%rcx
+0x0000004000802c9a:  ja     0x4000802dd8
+...
+\end{lstlisting}
+
+After parsing qemu output and fill in those value, LibFuzzer is now runnable.
+But we still got plenty of hook function we need to implement to make it works exactly like it should be.
