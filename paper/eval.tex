@@ -2,3 +2,16 @@
 \section{Evaluation}
 \label{sec:eval}
 
+In this section, we will compare the performance of original Libfuzzer, our Libfuzzer and AFL. We use fuzzer-test-suite, a set of tests for fuzzing engines provided by Google, as the test cases. In order to support our Libfuzzer, we modify the \texttt{target.cc} in some test cases. Take \texttt{c-ares-CVE-2016-5180} for example, we modified the \texttt{extern "C" int LLVMFuzzerTestOneInput(const uint8\_t *Data, size\_t Size)} function declaration to \texttt{int main()}. And use \texttt{read} function to read input data, the size is the length of input data. Check out more detail of patching fuzzer-test-suite in wiki page of our repository. The following specification is our machine information and all experiments were performed on it.
+
+\begin{lstlisting}
+virtual private server on Google Cloud Platform
+n1-standard-1 (one vCPU, 3.75 GB RAM)
+\end{lstlisting}
+
+\subsection{Compared with original Libfuzzer}
+
+
+\subsection{Compared with AFL}
+
+
