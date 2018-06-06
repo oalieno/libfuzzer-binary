@@ -1,7 +1,8 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: libfuzz.aux
 The style file: IEEEtran.bst
+I found no \citation commands---while reading file libfuzz.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -13,44 +14,45 @@ Database file #1: libfuzz.bib
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 
 Done.
-You've used 4 entries,
+You've used 0 entries,
             4087 wiz_defined-function locations,
-            841 strings with 7946 characters,
-and the built_in function-call counts, 2281 in all, are:
-= -- 185
-> -- 39
-< -- 11
-+ -- 22
-- -- 7
-* -- 109
-:= -- 393
-add.period$ -- 8
-call.type$ -- 4
-change.case$ -- 6
-chr.to.int$ -- 30
-cite$ -- 4
-duplicate$ -- 158
-empty$ -- 187
-format.name$ -- 8
-if$ -- 502
+            820 strings with 7283 characters,
+and the built_in function-call counts, 104 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 19
+:= -- 27
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 1
+format.name$ -- 0
+if$ -- 3
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 32
-newline$ -- 37
-num.names$ -- 4
-pop$ -- 75
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 23
+num.names$ -- 0
+pop$ -- 0
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 175
+skip$ -- 1
 stack$ -- 0
-substring$ -- 80
-swap$ -- 115
-text.length$ -- 1
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 4
+type$ -- 0
 warning$ -- 0
-while$ -- 8
-width$ -- 5
-write$ -- 60
+while$ -- 0
+width$ -- 0
+write$ -- 22
+(There was 1 error message)
