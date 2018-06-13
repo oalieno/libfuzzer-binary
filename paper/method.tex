@@ -75,4 +75,16 @@ IN:
 \end{lstlisting}
 
 After parsing qemu output and fill in those value, LibFuzzer is now runnable.
-But we still got plenty of hook function we need to implement to make it works exactly like it should be.
+
+\subsubsection{trace pc indir}
+
+Indirect call is a call instruction with nonconstant address.
+For example, \texttt{call rax}.
+Libfuzzer will gather information for indirect call using \texttt{\_\_sanitizer\_cov\_trace\_pc\_indir} hook function.
+It needs the address before call, and the address after call.
+We implement this hook function in the following steps.
+
+\begin{enumerate}
+    \item [1.] Modify qemu source code to output a text message when there is a indirect call.
+    \item [2.] When current translation block has a indirect call, we look at the ending address of the current block and the beginning address of the next block, then pass those values to \texttt{fuzzer::TPC.HandleCallerCallee}
+\end{enumerate}
