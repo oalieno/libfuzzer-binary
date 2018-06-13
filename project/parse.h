@@ -8,6 +8,8 @@
 #include <map>
 #include <exception>
 
+#include "../libfuzzer-source/FuzzerTracePC.h"
+
 #include "block.h"
 #include "struct.h"
 
@@ -21,6 +23,9 @@ const int kNumPCs = 1 << 21;
 
 extern uint8_t __sancov_trace_pc_guard_8bit_counters[kNumPCs];
 extern uint8_t __sancov_trace_pc_pcs[kNumPCs];
+namespace fuzzer {
+    extern TracePC TPC;
+}
 
 struct Segment {
     vector<unsigned long long> address;
@@ -75,11 +80,16 @@ vector<string> parse_line_until(int fd, string text) {
 
 void parse(int fd) {
     try {
-        parse_line_until(fd, "entry");
         map<unsigned long long, basic_block> index;
         get_block_info(index);
+
+        /* trace pc indir - vars*/
+        bool indir = false;
+        unsigned long long PC, Callee;
+
         while(true) {
-            parse_lines(fd, 2);
+            vector<string> options = parse_line_until(fd, "IN:");
+
             Segment current;
             bool valid = true;
             while(true) {
@@ -94,9 +104,28 @@ void parse(int fd) {
                 current.address.push_back(address);
             }
             if(not valid) continue;
+
+            /* trace pc guard */
             int i = index[current.start()].index;
             __sancov_trace_pc_pcs[i] = current.start();
             __sancov_trace_pc_guard_8bit_counters[i]++;
+
+            /* trace pc indir*/
+            if(indir) {
+                Callee = current.start();
+                fuzzer::TPC.HandleCallerCallee(PC, Callee);
+                indir = false;
+            }
+            for(auto option : options) {
+                if(option.find("[+]") != string::npos) {
+                    if(option.find("indir") != string::npos) {
+                        indir = true;
+                    }
+                }
+            }
+            if(indir) {
+                PC = current.end();
+            }
         }
     }
     catch(exception & e) {
