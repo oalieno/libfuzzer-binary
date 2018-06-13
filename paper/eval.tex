@@ -15,47 +15,54 @@ We choose some CVE test cases in fuzzer-test-suite, including \texttt{CVE-2016-5
 
 \begin{enumerate}
     \item [1.] \texttt{CVE-2016-5180}
-    \begin{lstlisting}
-    #0      READ units: 1
-    #2      INITED cov: 4 ft: 20 corp: 1/1b exec/s: 2 rss: 25Mb
-    #3      NEW    cov: 4 ft: 39 corp: 2/3b exec/s: 3 rss: 25Mb L: 2/2 MS: 1 CopyPart-
-    #4      pulse  cov: 4 ft: 59 corp: 2/3b exec/s: 2 rss: 25Mb
-    #4      NEW    cov: 4 ft: 59 corp: 3/5b exec/s: 2 rss: 25Mb L: 2/2 MS: 2 CopyPart-ShuffleBytes-
-    Error status : 139
-    Signal : Segmentation fault
-    \end{lstlisting}
-
-    \item [2.] \texttt{CVE-2015-8317}
-    \begin{lstlisting}
-    #0      READ units: 1
-    Error status : 139
-    Signal : Segmentation fault
-    \end{lstlisting}
-
-    \item [3.] \texttt{HeartBleed (CVE-2014-0160)}
-    \begin{lstlisting}
-    #0      READ units: 1
-     WARNING : block size exceeding max block size at 0x004959e0
-    [+] Try changing it with e anal.bb.maxsize
-     WARNING : block size exceeding max block size at 0x004d7920
-    [+] Try changing it with e anal.bb.maxsize
-     WARNING : block size exceeding max block size at 0x0043e9d0
-    [+] Try changing it with e anal.bb.maxsize
-     WARNING : block size exceeding max block size at 0x0043f160
-    [+] Try changing it with e anal.bb.maxsize
-     WARNING : block size exceeding max block size at 0x004962f0
-    [+] Try changing it with e anal.bb.maxsize
-     WARNING : block size exceeding max block size at 0x00496e70
-    [+] Try changing it with e anal.bb.maxsize
-     WARNING : block size exceeding max block size at 0x00457460
-    [+] Try changing it with e anal.bb.maxsize
-     WARNING : block size exceeding max block size at 0x004f2ace
-    [+] Try changing it with e anal.bb.maxsize
-    Error status : 134
-    Signal : Aborted
-    \end{lstlisting}
-
 \end{enumerate}
+
+This is a 1-byte-write-heap-buffer-overflow in c-ares. This bug was one of out a chain of two bugs that made a ChromeOS exploit possible: code execution in guest mode across reboots.
+
+\begin{lstlisting}
+#0      READ units: 1
+#2      INITED cov: 4 ft: 20 corp: 1/1b exec/s: 2 rss: 25Mb
+#3      NEW    cov: 4 ft: 39 corp: 2/3b exec/s: 3 rss: 25Mb L: 2/2 MS: 1 CopyPart-
+#4      pulse  cov: 4 ft: 59 corp: 2/3b exec/s: 2 rss: 25Mb
+#4      NEW    cov: 4 ft: 59 corp: 3/5b exec/s: 2 rss: 25Mb L: 2/2 MS: 2 CopyPart-ShuffleBytes-
+Error status : 139
+Signal : Segmentation fault
+\end{lstlisting}
+
+And we can find the 1-byte-write-heap-buffer-overflow by our Libfuzzer within 3 seconds.
+
+\begin{enumerate}
+    \item [2.] \texttt{CVE-2015-8317}
+\end{enumerate}
+
+This is a 1-byte-read-heap-buffer-overflow and a memory leak in libxml2.
+
+\begin{lstlisting}
+#0      READ units: 1
+Error status : 139
+Signal : Segmentation fault
+\end{lstlisting}
+
+Using our Libfuzzer can find the 1-byte-read-heap-buffer-overflow and a memory leak within 120 seconds.
+
+\begin{enumerate}
+    \item [3.] \texttt{HeartBleed (CVE-2014-0160)}
+\end{enumerate}
+
+This is a multi-byte-read-heap-buffer-overflow in openssl.
+
+\begin{lstlisting}
+#0      READ units: 1
+...
+ WARNING : block size exceeding max block size at 0x00457460
+[+] Try changing it with e anal.bb.maxsize
+ WARNING : block size exceeding max block size at 0x004f2ace
+[+] Try changing it with e anal.bb.maxsize
+Error status : 134
+Signal : Aborted
+\end{lstlisting}
+
+In this test case, we cannot find the multi-byte-read-heap-buffer-overflow because this is a network service and there are a few asserts cannot pass by running program in local. So we only got an aborted signal not segmentation fault.
 
 Compared with original LibFuzzer and plot the chart.
 
