@@ -11,7 +11,7 @@ n1-standard-1 (one vCPU, 3.75 GB RAM)
 
 \subsection{Compared with original LibFuzzer}
 
-We choose some CVE test cases in fuzzer-test-suite, including \texttt{CVE-2016-5180}, \texttt{CVE-2015-8317} and \texttt{HeartBleed (CVE-2014-0160)}, to evaluate the performance of our LibFuzzer. These are the output of running test cases by our LibFuzzer.
+We choose some CVE test cases in fuzzer-test-suite, including \texttt{CVE-2016-5180}, \texttt{CVE-2015-8317} and \texttt{HeartBleed (CVE-2014-0160)}, to evaluate the performance of our LibFuzzer. These are the output of running test cases by our LibFuzzer and do it 10 times to calculate the average time.
 
 \begin{enumerate}
     \item [1.] \texttt{CVE-2016-5180}
@@ -29,7 +29,7 @@ Error status : 139
 Signal : Segmentation fault
 \end{lstlisting}
 
-And we can find the 1-byte-write-heap-buffer-overflow by our Libfuzzer within 3 seconds.
+And we can find the 1-byte-write-heap-buffer-overflow by our LibFuzzer within 3 seconds.
 
 \begin{enumerate}
     \item [2.] \texttt{CVE-2015-8317}
@@ -43,7 +43,7 @@ Error status : 139
 Signal : Segmentation fault
 \end{lstlisting}
 
-Using our Libfuzzer can find the 1-byte-read-heap-buffer-overflow and a memory leak within 120 seconds.
+Using our LibFuzzer can find the 1-byte-read-heap-buffer-overflow and a memory leak within 120 seconds.
 
 \begin{enumerate}
     \item [3.] \texttt{HeartBleed (CVE-2014-0160)}
@@ -62,7 +62,7 @@ Error status : 134
 Signal : Aborted
 \end{lstlisting}
 
-In this test case, we cannot find the multi-byte-read-heap-buffer-overflow because this is a network service and there are a few asserts cannot pass by running program in local. So we only got an aborted signal not segmentation fault.
+In this test case, we cannot find the multi-byte-read-heap-buffer-overflow because this is a network service and there are a few asserts cannot pass by running program in local. As a result, we only got an aborted signal not segmentation fault.
 
 Compared with original LibFuzzer and plot the chart.
 
@@ -72,4 +72,9 @@ As we can see, because the implementaion of our LibFuzzer, the IO speed and anal
 
 \subsection{Compared with AFL}
 
+According to the section of binary-only instrumentation in the technical whitepaper for afl-fuzz, we know the overhead of the QEMU mode is roughly 2-5x. So we try to compare with the overhead, the time of linking IO and analyzing the output, between AFL and our LibFuzzer. And the following chart is the overhead of the test cases we ran before.
+
+\includegraphics[width=\linewidth]{eval2.png}
+
+The green area is the overhead of the QEMU mode and the bule line is our LibFuzzer overhead. We can see the result is close to the QEMU mode and therefore it maybe cost that much time to do analyze and link IO for supporting binary only mode.
 
