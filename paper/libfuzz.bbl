@@ -21,24 +21,14 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{AFL}
+``american fuzzy lop,'' \url{http://lcamtuf.coredump.cx/afl/}.
+
 \bibitem{libfuzz}
 K.~Serebryany, ``{libFuzzer} – a library for coverage-guided fuzz testing,''
   {LLVM project}, 2015, \url{https://llvm.org/docs/LibFuzzer.html}.
 
-\bibitem{honggfuzz}
-R.~Swiecki, ``honggfuzz,'' online, 2010, \url{http://honggfuzz.com/}.
-
-\bibitem{PZKJ17}
-T.~Petsios, J.~Zhao, A.~D. Keromytis, and S.~Jana, ``Slowfuzz: Automated
-  domain-independent detection of algorithmic complexity vulnerabilities,'' in
-  \emph{Proceedings of the 2017 ACM SIGSAC Conference on Computer and
-  Communications Security}, 2017, pp. 2155--2168.
-
-\bibitem{Sere17}
-\BIBentryALTinterwordspacing
-K.~Serebryany, ``{OSS-Fuzz} - {Google's} continuous fuzzing service for open
-  source software,'' 2017, {USENIX Security}. [Online]. Available:
-  \url{https://www.usenix.org/conference/usenixsecurity17/technical-sessions/presentation/serebryany}
-\BIBentrySTDinterwordspacing
+\bibitem{fuzzer-test-suite}
+``fuzzer-test-suite,'' \url{https://github.com/google/fuzzer-test-suite}.
 
 \end{thebibliography}

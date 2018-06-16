@@ -6,9 +6,9 @@
 
   When doing fuzz testing, we focus on crashes. That is, we try to generate input data that make program crashed. Therefore, fuzzer analyzes execution information such as path, coverage, and exceptions to decide what kind of input data is next time.
 
-  American Fuzzy Lop (AFL) is one of the most famous fuzzing tools. There are two modes in AFL. One is source code mode, and the other is binary (QEMU) mode. Source code mode uses afl-gcc to compile the source code, in the meanwhile, it inserts lots of checkpoints to send execution information back. On the other hand, binary (QEMU) mode uses QEMU to run the binary, and it analyzes execution information from QEMU directly. Because of the implementation, it’s no doubt that source code mode would find crashes faster than binary (QEMU) mode.
+  American Fuzzy Lop (AFL)\cite{AFL} is one of the most famous fuzzing tools. There are two modes in AFL. One is source code mode, and the other is binary (QEMU) mode. Source code mode uses afl-gcc to compile the source code, in the meanwhile, it inserts lots of checkpoints to send execution information back. On the other hand, binary (QEMU) mode uses QEMU to run the binary, and it analyzes execution information from QEMU directly. Because of the implementation, it’s no doubt that source code mode would find crashes faster than binary (QEMU) mode.
 
-  LibFuzzer is a library for coverage-guided fuzz testing. It only support source code mode. Different from AFL, LibFuzzer considers target source code as library, and it send inputs through “call function”. It compile its source code with target source code together.
+  LibFuzzer\cite{libfuzz} is a library for coverage-guided fuzz testing. It only support source code mode. Different from AFL, LibFuzzer considers target source code as library, and it send inputs through “call function”. It compile its source code with target source code together.
 
   In some case, LibFuzzer found crashes much faster than AFL did. Heartbleed (CVE-2014-0160) was a critical security bug in the OpenSSL cryptography. It took couples of hours to find crash using AFL. However, it only took ten seconds to find crash using LibFuzzer. That’s one of the reasons that we wanted to build binary mode for LibFuzzer.
 
