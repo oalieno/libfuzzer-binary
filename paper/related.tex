@@ -1,0 +1,6 @@
+
+\section{Related Work}
+\label{sec:related}
+
+  We wanted to make LibFuzzer support binary mode. There are lots of fuzzers which already support it, inclusive of AFL. AFL uses QEMU to run the binary, and it analyzes execution information from QEMU indirectly. It patches QEMU before fuzzing, and these patches trace execution edges into AFL's edge map. Because of the implementation, it’s no doubt that source code mode would find crashes faster than binary (QEMU) mode.
+
