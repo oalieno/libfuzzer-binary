@@ -8,15 +8,15 @@
 #include <map>
 #include <exception>
 
-#include "../libfuzzer-source/FuzzerTracePC.h"
+#include "../libfuzzer/libfuzzer-source/FuzzerTracePC.h"
 
-#include "block.h"
 #include "struct.h"
 
 using namespace std;
 
 #define SZ(x) ((int)x.size())
 
+extern map<unsigned long long, basic_block> block_index;
 extern void err_msg(const char *);
 
 const int kNumPCs = 1 << 21;
@@ -80,8 +80,7 @@ vector<string> parse_line_until(int fd, string text) {
 
 void parse(int fd) {
     try {
-        map<unsigned long long, basic_block> index;
-        get_block_info(index);
+        map<unsigned long long, basic_block> &index = block_index;
 
         /* trace pc indir - vars*/
         bool indir = false;

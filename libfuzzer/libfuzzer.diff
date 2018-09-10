@@ -1,0 +1,36 @@
+diff -Naur aaa/build.sh libfuzzer-source/build.sh
+--- aaa/build.sh	2018-09-10 23:25:47.951236311 +0800
++++ libfuzzer-source/build.sh	2018-09-10 23:13:45.947562387 +0800
+@@ -1,8 +1,9 @@
+ #!/bin/bash
+ LIBFUZZER_SRC_DIR=$(dirname $0)
+ CXX="${CXX:-clang}"
++CFLAGS="-I/usr/include/libr -I../../cJSON"
+ for f in $LIBFUZZER_SRC_DIR/*.cpp; do
+-  $CXX -g -O2 -fno-omit-frame-pointer -std=c++11 $f -c &
++  $CXX $CFLAGS -g -O2 -fno-omit-frame-pointer -std=c++11 $f -c &
+ done
+ wait
+ rm -f libFuzzer.a
+diff -Naur aaa/FuzzerMain.cpp libfuzzer-source/FuzzerMain.cpp
+--- aaa/FuzzerMain.cpp	2018-09-10 23:25:47.947236313 +0800
++++ libfuzzer-source/FuzzerMain.cpp	2018-09-10 23:08:26.171710265 +0800
+@@ -11,11 +11,18 @@
+ 
+ #include "FuzzerDefs.h"
+ 
++#include <map>
++#include "../../project/struct.h"
++#include "../../project/block.h"
++
++std::map<unsigned long long, basic_block> block_index;
++
+ extern "C" {
+ // This function should be defined by the user.
+ int LLVMFuzzerTestOneInput(const uint8_t *Data, size_t Size);
+ }  // extern "C"
+ 
+ int main(int argc, char **argv) {
++  get_block_info(block_index);
+   return fuzzer::FuzzerDriver(&argc, &argv, LLVMFuzzerTestOneInput);
+ }
