@@ -22,13 +22,25 @@
 \BIBdecl
 
 \bibitem{AFL}
-``american fuzzy lop,'' \url{http://lcamtuf.coredump.cx/afl/}.
+M.~Zalewski, ``{American Fuzzy Lop},'' \url{http://lcamtuf.coredump.cx/afl/}.
 
-\bibitem{libfuzz}
+\bibitem{libfuzzer}
 K.~Serebryany, ``{libFuzzer} – a library for coverage-guided fuzz testing,''
   {LLVM project}, 2015, \url{https://llvm.org/docs/LibFuzzer.html}.
 
+\bibitem{qemu}
+F.~Bellard, ``{QEMU}, a fast and portable dynamic translator,'' in
+  \emph{Proceedings of the USENIX 2005 Annual Technical Conference, FREENIX
+  Track}.
+
+\bibitem{addresssanitizer}
+K.~Serebryany, D.~Bruening, A.~Potapenko, and D.~Vyukov, ``{AddressSanitizer}:
+  A fast address sanity checker,'' in \emph{Presented as part of the 2012
+  {USENIX} Annual Technical Conference}.\hskip 1em plus 0.5em minus 0.4em\relax
+  {USENIX}, 2012, pp. 309--318.
+
 \bibitem{fuzzer-test-suite}
-``fuzzer-test-suite,'' \url{https://github.com/google/fuzzer-test-suite}.
+{Google Inc.}, ``fuzzer-test-suite,''
+  \url{https://github.com/google/fuzzer-test-suite}.
 
 \end{thebibliography}

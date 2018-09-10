@@ -1,6 +1,7 @@
-\documentclass[conference,comsoc]{IEEEtran}
+\documentclass[conference,comsoc,9pt]{IEEEtran}
 \usepackage{listings}
 \usepackage{color}
+\usepackage{xspace}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
@@ -27,20 +28,24 @@
          stringstyle=\color{mymauve},     % string literal style
  }
 
+\def\sys{libFuzzer-bin\xspace}
+\def\libfuzzer{libFuzzer\xspace}
+\newcommand{\ttstyle}[1]{\texttt{\scriptsize #1}}
 
 \begin{document}
 
-\title{Design and Implement Binary Fuzzing\\based on LibFuzzer}
+\title{Design and Implement Binary Fuzzing\\based on \libfuzzer}
 \author{
-\IEEEauthorblockN{Wei-Chieh Chao, Si-Chen Lin, Yi-Hsien Chen, Chun-Ying Huang}
-\IEEEauthorblockA{Department of Computer Science, College of Computer Science, National Chiao Tung University}
+\IEEEauthorblockN{Wei-Chieh Chao$^1$, Si-Chen Lin$^1$, Yi-Hsien Chen$^1$, Chin-Wei Tien$^2$, Chun-Ying Huang$^1$}
+\IEEEauthorblockA{$^1$ Department of Computer Science, College of Computer Science, National Chiao Tung University\\
+$^2$ Cybersecurity Technology Institute, Institute for Information Industry}
 }
 
 \maketitle
 
 \input{abstract}
 \input{intro}
-\input{related}
+%\input{related}
 \input{method}
 \input{eval}
 \input{conclusion}

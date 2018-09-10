@@ -1,0 +1,475 @@
+z = c(2, 5, 1, 1, 1)
+plot(z)
+cumsum(z)
+plot(cumsum(z)/sum(z))
+r = rnorm(10)
+r
+r = seq(100)
+r
+help(quantile)
+quantile(r, seq=c(0, 0.5, 0.99))
+getwd()
+source('~/Dropbox/shared/RemoteDesktopStreaming/plot/app.R', chdir = TRUE)
+help(barplot)
+dat = matrix(c(0.8, 47, 6, 3, 120, 41), nr=2);
+dat
+barplot(dat)
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);
+barplot(dat)
+barplot(dat, names.arg=c("a", "b"), beside=TRUE)
+barplot(dat, beside=TRUE)
+barplot(dat, beside=TRUE, ylab="time (seconds)")
+t = barplot(dat, beside=TRUE, ylab="time (seconds)");
+t
+t[,1]
+average(t[,1])
+avg(t[,1])
+mean(t[,1])
+text
+help(text)
+t = barplot(dat, beside=TRUE, ylab="time (seconds)");
+text(t, dat)
+dat
+text(t, dat, c(0.8, 3.0, 47, 120, 6, 41))
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+#
+t = barplot(dat, beside=TRUE, ylab="time (seconds)");#
+text(t, dat+1, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)
+t = barplot(dat, beside=TRUE, ylab="time (seconds)");#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)#
+tx = c(mean(t[,1]), mean(t[,2]), mean(t[,3]));
+max(dat)
+t = barplot(dat, beside=TRUE, ylab="time (seconds)", ylim=c(0, max(dat+10)));#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)#
+tx = c(mean(t[,1]), mean(t[,2]), mean(t[,3]));
+help(barplot)
+help(axes)
+help(axes)
+t = barplot(dat, beside=TRUE, ylab="time (seconds)", ylim=c(0, max(dat+10)), names.arg = c("A", "B", "C"));#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)#
+tx = c(mean(t[,1]), mean(t[,2]), mean(t[,3]));
+t = barplot(dat, beside=TRUE, #
+        ylab="time (seconds)", ylim=c(0, max(dat+10)), #
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"));#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)
+t = barplot(dat, beside=TRUE, #
+        ylab="time (seconds)", ylim=c(0, max(dat+10)), #
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)
+par("mar")
+help(par)
+back_mar = par("mar", c(3, 4, 2, 2)+0.1)        # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, #
+        ylab="time (seconds)", ylim=c(0, max(dat+10)), #
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)#
+par("mar", back_mar);
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, #
+        ylab="time (seconds)", ylim=c(0, max(dat+10)), #
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)#
+par(mar = back_mar);
+back_mar
+help(postscript)
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");
+dir()
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+postscript(file="eval_libfuzz.eps", onefile=TRUE, width=3, height=2);#
+setEPS();#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+10)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)#
+par(mar = back_mar);#
+#
+dev.off();
+help(seEPS)
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+postscript(file="eval_libfuzz.eps", onefile=TRUE, width=3, height=2);#
+setEPS();#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+10)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)#
+par(mar = back_mar);#
+#
+dev.off();
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+postscript(file="eval_libfuzz.eps", onefile=TRUE, width=3, height=2);#
+setEPS();#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+10)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)#
+par(mar = back_mar);#
+#
+dev.off();
+help(setEPS)
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+#
+setEPS();#
+postscript(file="eval_libfuzz.eps", onefile=TRUE, width=3, height=2);#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+10)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.8)#
+par(mar = back_mar);#
+#
+dev.off();
+setEPS();#
+postscript(file="eval_libfuzz.eps", onefile=TRUE, width=3, height=2);#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+10)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+help(postscript)
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+#
+setEPS();#
+postscript(file="eval_libfuzz.eps", paper="special", width=3, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+10)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+#
+setEPS();#
+postscript(file="eval_libfuzz.eps", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+10)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.8);#
+text(t, dat+5, c(0.8, 3.0, 47, 120, 6, 41), cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+#
+setEPS();#
+postscript(file="eval_libfuzz.eps", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+par(mar = back_mar);#
+#
+dev.off();
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("bottom", c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"), pch=15, bty="n")
+par("mar")
+par(mar=c(5,4,4,2)+0.1)
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=c("grey", "lightgrey"), pch=15, bty="n")#
+par(mar = back_mar);
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=c("grey", "lightgrey"), pch=15, bty="n", cex=0.6)#
+par(mar = back_mar);
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=c("darkgrey", "lightgrey"), pch=15, bty="n", cex=0.8)#
+par(mar = back_mar);
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=c("darkgrey", "lightgrey"),#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=c("darkgrey", "lightgrey"), pch=15, bty="n", cex=0.8)#
+par(mar = back_mar);
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.8)#
+par(mar = back_mar);
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+#
+setEPS();#
+postscript(file="eval_libfuzz.eps", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.8)#
+par(mar = back_mar);#
+#
+dev.off();
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+#
+setEPS();#
+postscript(file="eval_libfuzz.eps", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 2, 2)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+setwd("/Users/huangant/Dropbox/working/doc_libfuzz.ep/images");#
+#
+setEPS();#
+postscript(file="eval_libfuzz.eps", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+help(pdf)
+postscript(file="eval_libfuzz.pdf", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+pdf(file="eval_libfuzz.pdf", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="Overhead", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("AFL", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="Overhead", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("AFL QEMU mode", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="Overhead", ylim=c(0, max(dat+20)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+15, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("AFL QEMU mode", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="Overhead", ylim=c(0, max(dat)*1.1),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+max(dat)/10, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("AFL QEMU mode", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="Overhead", ylim=c(0, max(dat)*1.2),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+max(dat)/10, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("AFL QEMU mode", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);
+pdf(file="eval_libfuzz.pdf", paper="special", width=4, height=2, fonts=c("sans", "mono"));
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat)*1.2)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+max(dat)/10, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+pdf(file="eval_libfuzz.pdf", paper="special", width=4, height=2, fonts=c("sans", "mono"));
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat)*1.2)),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+max(dat)/10, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+pdf(file="eval_libfuzz.pdf", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="time (seconds)", ylim=c(0, max(dat)*1.2),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+max(dat)/10, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+pdf(file="eval_afl.pdf", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(1.22, 2.75, 1.50, 1.55, 0, 5.83), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="Overhead", ylim=c(0, max(dat)*1.2),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+max(dat)/10, c(1.22, 2.75, 1.50, 1.55, "N/A", 5.83), cex=0.6)#
+legend("topleft", c("AFL QEMU mode", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();
+pdf(file="eval_libfuzz.pdf", paper="special", width=4, height=2, fonts=c("sans", "mono"));#
+#
+dat = matrix(c(0.8, 3, 47, 120, 6, 41), nr=2);#
+colors = c(rgb(0.2, 0.2, 0.2), rgb(0.7, 0.7, 0.7));#
+#
+back_mar = par(mar = c(3, 4, 1, 1)+0.1) # bottom, left, top, right#
+t = barplot(dat, beside=TRUE, col=colors,#
+        ylab="Time (seconds)", ylim=c(0, max(dat)*1.2),#
+        names.arg = c("CVE-2016-6180", "CVE-2015-8317", "CVE-2014-0160"),#
+        cex.names=0.6);#
+text(t, dat+max(dat)/10, c(0.8, 3.0, 47, 120, 6, 41), cex=0.6)#
+legend("topleft", c("libFuzzer", "libFuzzer-bin"), col=colors, pch=15, bty="n", cex=0.7)#
+par(mar = back_mar);#
+#
+dev.off();

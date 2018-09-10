@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: libfuzz.aux
 The style file: IEEEtran.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -8,49 +8,56 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: libfuzz.bib
+I was expecting a `,' or a `}'---line 27 of file libfuzz.bib
+ :   
+ :   series = {USENIX'05},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty year in qemu
 
 Done.
-You've used 3 entries,
+You've used 5 entries,
             4087 wiz_defined-function locations,
-            831 strings with 7545 characters,
-and the built_in function-call counts, 1071 in all, are:
-= -- 70
-> -- 6
-< -- 0
-+ -- 4
-- -- 1
-* -- 46
-:= -- 184
-add.period$ -- 6
-call.type$ -- 3
-change.case$ -- 6
-chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 94
-empty$ -- 107
-format.name$ -- 1
-if$ -- 223
+            845 strings with 7957 characters,
+and the built_in function-call counts, 2505 in all, are:
+= -- 177
+> -- 41
+< -- 9
++ -- 22
+- -- 8
+* -- 107
+:= -- 405
+add.period$ -- 11
+call.type$ -- 5
+change.case$ -- 8
+chr.to.int$ -- 24
+cite$ -- 6
+duplicate$ -- 200
+empty$ -- 244
+format.name$ -- 9
+if$ -- 559
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 22
-newline$ -- 32
-num.names$ -- 1
-pop$ -- 68
+int.to.str$ -- 5
+missing$ -- 41
+newline$ -- 38
+num.names$ -- 5
+pop$ -- 116
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 77
+skip$ -- 187
 stack$ -- 0
-substring$ -- 9
-swap$ -- 46
-text.length$ -- 0
+substring$ -- 67
+swap$ -- 120
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 3
-warning$ -- 0
-while$ -- 1
-width$ -- 4
-write$ -- 43
+type$ -- 5
+warning$ -- 1
+while$ -- 9
+width$ -- 6
+write$ -- 61
+(There was 1 error message)

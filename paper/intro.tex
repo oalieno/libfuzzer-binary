@@ -2,14 +2,15 @@
 \section{Introduction}
 \label{sec:intro}
 
-  Fuzzing is a technique to automatically test software by providing random data as input. When fuzzing, we usually build a fuzzer to generate and send random inputs to the program. After program exit, it will send execution information back to the fuzzer. Then, the fuzzer will generate new input based on the execution information.
+Fuzzing is a common technique used to perform automatic software testing. It starts with a user-provided initial input. A number of mutations are performed against the initial input to generate more test inputs. Test inputs are then used for fuzzing and testing if any unexpected behavior, e.g., crash, can be triggered by the program.
+%
+A tool used to perform fuzzing test is often called a fuzzer.
+One popular class of fuzzers is grey-box fuzzers.
+Grey-box fuzzers collect runtime states from a program under testing, and it, therefore, achieves a balance between efficiency and effectiveness, compared to white-box and black-box fuzzers.
 
-  When doing fuzz testing, we focus on crashes. That is, we try to generate input data that make program crashed. Therefore, fuzzer analyzes execution information such as path, coverage, and exceptions to decide what kind of input data is next time.
+Most grey-box fuzzers require source codes to perform a fuzzing test.
+This is because the most efficient approach to collect program runtime states is to perform static instrumentation when compiling a program.
+Codes used to collect runtime states are embedded into a compiled program so that runtime states can be reported to the fuzzers in a fuzzing process.
+However, source codes may be not accessible for security engineers, and it shows the demand on grey-box based fuzzing for binaries.
 
-  American Fuzzy Lop (AFL)\cite{AFL} is one of the most famous fuzzing tools. There are two modes in AFL. One is source code mode, and the other is binary (QEMU) mode. Source code mode uses afl-gcc to compile the source code, in the meanwhile, it inserts lots of checkpoints to send execution information back.
-
-  LibFuzzer\cite{libfuzz} is a library for coverage-guided fuzz testing. It only support source code mode. Different from AFL, LibFuzzer considers target source code as library, and it send inputs through “call function”. It compile its source code with target source code together.
-
-  In some case, LibFuzzer found crashes much faster than AFL did. Heartbleed (CVE-2014-0160) was a critical security bug in the OpenSSL cryptography. It took couples of hours to find crash using AFL. However, it only took ten seconds to find crash using LibFuzzer. That’s one of the reasons that we wanted to build binary mode for LibFuzzer.
-
-  Generally, we built a bridge for communication between LibFuzzer and binary. We used QEMU, as same as AFL, to generate runtime information. In detail, we executed binary through QEMU and analyzed runtime information from QEMU after exited. LibFuzzer need lots of information from binary, such as coverage, caller, and cmp. We focused on coverage here. Coverage is how many percent of codes have been executed. First, we used radare2 to generate basic blocks infromation. Moreover, we did static analysis before executing binary. Second, we executed binary through QEMU and analyzed runtime information dynamically. Finally, we sent coverage infromation back to LibFuzzer.
+To our knowledge, the American Fuzzy Lop (AFL)~\cite{AFL} is the only one grey-box fuzzer that support binary fuzzing. However, recent grey-box fuzzers such as \libfuzzer~\cite{libfuzzer} find crashes faster than AFL in several cases. It might because \libfuzzer considers more runtime states than AFL. Currently, \libfuzzer still has to work with source codes. Therefore, in this paper, we attempt to design and implement a binary fuzzer based \libfuzzer and see what would be the critical factor to affect the performance of fuzzing.

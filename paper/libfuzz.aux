@@ -1,24 +1,41 @@
 \relax 
 \citation{AFL}
-\citation{libfuzz}
+\citation{libfuzzer}
+\citation{qemu}
+\citation{addresssanitizer}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}}
 \newlabel{sec:intro}{{I}{1}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Methodology}{1}}
 \newlabel{sec:method}{{II}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Link IO together}{1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Collect Runtime Information}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-A}}Overview}{1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The architecture of our design and implementation.}}{1}}
+\newlabel{fig:arch}{{1}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-B}}Architecture}{1}}
+\newlabel{lbl:exec}{{\unhbox \voidb@x \hbox {II-B}}{1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-C}}LLVM Hooks}{1}}
+\newlabel{lbl:hooks}{{\unhbox \voidb@x \hbox {II-C}}{1}}
+\citation{AFL}
 \citation{fuzzer-test-suite}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-B}1}trace pc guard}{2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {\unhbox \voidb@x \hbox {II-B}2}trace pc indir}{2}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Evaluation}{2}}
-\newlabel{sec:eval}{{III}{2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Compared with original LibFuzzer}{2}}
 \bibstyle{IEEEtran}
 \bibdata{libfuzz}
 \bibcite{AFL}{1}
-\bibcite{libfuzz}{2}
-\bibcite{fuzzer-test-suite}{3}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Compared with AFL}{3}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusion}{3}}
-\newlabel{sec:conclusion}{{IV}{3}}
-\@writefile{toc}{\contentsline {section}{References}{3}}
+\bibcite{libfuzzer}{2}
+\bibcite{qemu}{3}
+\bibcite{addresssanitizer}{4}
+\bibcite{fuzzer-test-suite}{5}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {II-D}}Runtime State Collection}{2}}
+\newlabel{lbl:runtime}{{\unhbox \voidb@x \hbox {II-D}}{2}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {II-D}0a}Coverage}{2}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {II-D}0b}Indirect Calls}{2}}
+\@writefile{toc}{\contentsline {paragraph}{\numberline {\unhbox \voidb@x \hbox {II-D}0c}Memory search}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Evaluation}{2}}
+\newlabel{sec:eval}{{III}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-A}}Correctness}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Performance Comparison for native libFuzzer\xspace  and libFuzzer-bin\xspace  .}}{2}}
+\newlabel{fig:libfuzz}{{2}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Performance comparison against AFL.}}{2}}
+\newlabel{fig:afl}{{3}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\unhbox \voidb@x \hbox {III-B}}Performance}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Conclusion}{2}}
+\newlabel{sec:conclusion}{{IV}{2}}
+\@writefile{toc}{\contentsline {section}{References}{2}}

@@ -2,7 +2,8 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-In this paper we modify LibFuzzer to fuzz ELF executable without source code.
-The main work we done is collectng runtime information for LibFuzzer.
-Compare to AFL QEMU mode overhead, our result is very similar.
-But we still got plenty of hook function we need to implement to make it works exactly like it should be.
+We design and implement \sys, a binary fuzzer based on \libfuzzer.
+This is a work-in-progress.
+Although not all hooks required by \libfuzzer are implemented, our preliminary evaluations show that the current \sys is effectiveness and efficiency.
+Our future work is to design and implement all \libfuzzer required hooks and conduct intensive experiments to show its effectiveness.
+

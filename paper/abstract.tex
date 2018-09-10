@@ -1,6 +1,6 @@
 \begin{abstract}
-Libfuzzer is a coverage-guided fuzzing engine.
-But not like AFL, which can do the fuzzing without source code, Libfuzzer needs source code of the target to compile and do the fuzzing.
-This paper presents a way to use Libfuzzer to fuzz the binary without source code.
-Our implementation link the IO of binary with Libfuzzer, and use qemu to collect runtime information.
+We design and implement \sys, a coverage-guided binary fuzzer based on \libfuzzer.
+We discuss how \sys is implemented, measure the overheads of our implementation, and compare its performance against the American Fuzzy Lop (AFL) fuzzer.
+This is a work-in-progress.
+Our evaluation results show that, compared with the vanilla AFL, the current implementation brings only limited overheads and is able to identify possible vulnerabilities in a shorter time.
 \end{abstract}
