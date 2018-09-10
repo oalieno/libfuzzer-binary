@@ -2,3 +2,5 @@
 crash*
 *.swp
 .qemu.log
+fuzzer
+cJSON
