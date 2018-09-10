@@ -36,6 +36,7 @@ sudo apt-get install ninja-build
 ```
 git clone --recurse-submodules https://github.com/OAlienO/libfuzzer-binary.git
 cd libfuzzer-binary
+./get.sh
 ninja
 ```
 
